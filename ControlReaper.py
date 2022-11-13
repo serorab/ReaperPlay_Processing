@@ -8,8 +8,8 @@ import time
 from tkinter import *
  
 # funciones
-ip_info = '192.168.0.16'
-port_info = '8005'
+ip_info = '192.168.0.16' #Acá corresponde poner la ip Local designada por el Router.
+port_info = '8005' 
 
 def envio_play():
   client.send_message("/play", 1)
