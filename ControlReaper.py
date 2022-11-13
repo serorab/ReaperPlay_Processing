@@ -6,7 +6,6 @@ import time
 
 # Importamos tkinter
 from tkinter import *
-#import tkinter as tk
  
 # funciones
 ip_info = '192.168.0.16'
