@@ -5,10 +5,6 @@ import time
 
 # Importamos tkinter
 from tkinter import *
- 
-# funciones
-ip_info = '192.168.0.16' #Acá corresponde poner la ip Local designada por el Router.
-port_info = '8005' 
 
 #Variables 
 ip_info = '192.168.0.17'
