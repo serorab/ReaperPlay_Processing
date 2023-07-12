@@ -1,4 +1,3 @@
-# Este programa en sí no hace mucho, sólo es un experimento para conectar Python con Reaper a través de OSC.
 # Tiene tres botones: Play - Pause - Exit.
 import argparse
 from pythonosc import udp_client
@@ -11,6 +10,11 @@ from tkinter import *
 ip_info = '192.168.0.16' #Acá corresponde poner la ip Local designada por el Router.
 port_info = '8005' 
 
+#Variables 
+ip_info = '192.168.0.17'
+port_info = '9005'
+
+# funciones
 def envio_play():
   client.send_message("/play", 1)
 
@@ -30,7 +34,6 @@ main_title = Label(text = "Control ReaperPlay", font = ("Cambria", 14), bg = "#5
 main_title.pack()
 
 # Botones de envíos
-
 play_btn = Button(win, text = "Play", width = "10", height = "2", command = envio_play, bg = "#00CD63")
 play_btn.place(x = 20, y = 100)
 

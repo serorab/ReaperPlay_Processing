@@ -14,7 +14,7 @@ PImage[] images = new PImage[maxImages];
 PImage fondo;
 PFont fuente;
 float colorR, radio;
-String texto,vlrS;
+String texto, vlrS, nombrePista;
 int num, colorE, color1, color2, color3, c1, c2, c3;
 float ang, vlr, cond, valor, v, vl, vr, Clip;
 
@@ -25,7 +25,7 @@ void setup(){
   surface.setTitle("ReaperPlay | Sergio Ordóñez");
   surface.setResizable(false);//Si se ingresa true se le puede modificar el tamaño de la ventana.
   fuente = loadFont("BeyondTheMountains-60.vlw");  
-  texto = (" ");
+  //texto = (" ");
   colorR = 255;
   for (int i = 0; i < images.length; i++){
     images[i] = loadImage("DK_"+ i + ".png");
@@ -38,7 +38,7 @@ void setup(){
   valor = 0;
   vl = 0;
   
-  puerto = 9005; // Puerto para comunicación con Reaper.
+  puerto = 8005; // Puerto para comunicación con Reaper.
   oscP5 = new OscP5(this, puerto);
 }
 
@@ -60,7 +60,7 @@ void draw(){
     r();
     play();break;
     case 2:
-    pause(); break;
+    pause();break;
     case 3:
     Clilp();
     l();
@@ -87,6 +87,7 @@ void draw(){
 void oscEvent(OscMessage theOscMessage){
   if(theOscMessage.checkAddrPattern("/master/vu")==true){
     valor = theOscMessage.get(0).floatValue();//Obtengo el valor del argumento
+    println(valor); 
   }
   
   if(theOscMessage.checkAddrPattern("/master/vu/L")==true){
@@ -125,4 +126,8 @@ void oscEvent(OscMessage theOscMessage){
     vlr = theOscMessage.get(0).floatValue();
     num = 6;
   }
+  
+  if(theOscMessage.checkAddrPattern("/track/name")==true){
+  nombrePista = theOscMessage.get(0).stringValue();
+}
 }
